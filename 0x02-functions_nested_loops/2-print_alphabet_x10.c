@@ -1,20 +1,21 @@
-/*
- * File: 1-alphabet.c
- *
- * Auth: Kehinde Janet
- */
-
+table File  20 lines(17 sloc)  238 Bytes
 #include "main.h"
 
 /**
- * print_alphabet - prints the alphabet in lowercase, followed by a new line.
+ * print_alphabet_x10 -> prints the lowercase alphabets
  */
-void print_alphabet(void)
+
+void print_alphabet_x10(void)
 {
-		char alpha;
+		int j;
+		int x;
 
-		for (alpha = 97; alpha <= 122; alpha++)
-			_putchar(alpha);
-
-		_putchar('\n');
+for (x = 0; x < 10; x++)
+{
+for (j = 'a'; j <= 'z'; j++)
+{
+_putchar(j);
+}
+_putchar('\n');
+}
 }
