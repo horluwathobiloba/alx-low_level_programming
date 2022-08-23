@@ -73,16 +73,16 @@ void print_class(unsigned char *e_ident)
 
 	switch (e_ident[EI_CLASS])
 	{
-		case ELFCLASSNONE:
-			printf("none\n");
-			break;
-		case ELFCLASS32:
-			printf("ELF32\n");
-			break;
-		case ELFCLASS64:
-			printf("ELF64\n");
-			break;
-		default:
+	case ELFCLASSNONE:
+		printf("none\n");
+		break;
+	case ELFCLASS32:
+		printf("ELF32\n");
+		break;
+	case ELFCLASS64:
+		printf("ELF64\n");
+		break;
+	default:
 		printf("<unknown: %x>\n", e_ident[EI_CLASS]);
 	}
 }
@@ -118,7 +118,7 @@ void print_data(unsigned char *e_ident)
 void print_version(unsigned char *e_ident)
 {
 	printf("  Version:                           %d",
-		 e_ident[EI_VERSION]);
+	       e_ident[EI_VERSION]);
 
 	switch (e_ident[EI_VERSION])
 	{
@@ -183,7 +183,7 @@ void print_osabi(unsigned char *e_ident)
 void print_abi(unsigned char *e_ident)
 {
 	printf("  ABI Version:                       %d\n",
-		 e_ident[EI_ABIVERSION]);
+	       e_ident[EI_ABIVERSION]);
 }
 
 /**
@@ -213,7 +213,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 		printf("DYN (Shared object file)\n");
 		break;
 	case ET_CORE:
-		rintf("CORE (Core file)\n");
+		printf("CORE (Core file)\n");
 		break;
 	default:
 		printf("<unknown: %x>\n", e_type);
@@ -231,9 +231,9 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 	{
-	e_entry = ((e_entry << 8) & 0xFF00FF00) |
-		  ((e_entry >> 8) & 0xFF00FF);
-	e_entry = (e_entry << 16) | (e_entry >> 16);
+		e_entry = ((e_entry << 8) & 0xFF00FF00) |
+			  ((e_entry >> 8) & 0xFF00FF);
+		e_entry = (e_entry << 16) | (e_entry >> 16);
 	}
 
 	if (e_ident[EI_CLASS] == ELFCLASS32)
@@ -278,7 +278,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	o = open(argv[1], O_RDONLY);
 	if (o == -1)
 	{
-		1dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
 	}
 	header = malloc(sizeof(Elf64_Ehdr));
